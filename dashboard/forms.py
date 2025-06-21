@@ -8,6 +8,7 @@ class AboutUsForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'About Us'}),
+            'slug': forms.HiddenInput(),
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'About us', 'row': 4}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'})
         }
@@ -19,6 +20,7 @@ class NewsForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter title of news'}),
+            'slug': forms.HiddenInput(),
             'content': forms.Textarea(
                 attrs={'class': 'form-control', 'placeholder': 'Enter content of news', 'row': 5}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'})
@@ -31,6 +33,7 @@ class CourseForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter title of course'}),
+            'slug': forms.HiddenInput(),
             'description': forms.Textarea(
                 attrs={'class': 'form-control', 'placeholder': 'Enter description of course', 'row': 5}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'})
@@ -43,6 +46,7 @@ class LessonForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter title of lesson'}),
+            'slug': forms.HiddenInput(),
             'description': forms.Textarea(
                 attrs={'class': 'form-control', 'placeholder': 'Enter description of lesson', 'row': 5}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'}),
