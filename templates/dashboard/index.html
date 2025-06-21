@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+{% load humanize %}
+{% include dashboard/sidebar.html%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="userbar">
+      <div class="username">Komronbek</div>
+      <div class="user-menu" id="userMenu">
+        <img src="" alt="User Avatar" class="avatar" />
+        <div class="dropdown" id="dropdown">
+          <ul>
+            <li><a href="#">Profil</a></li>
+            <li><a href="#">Sozlamalar</a></li>
+            <li><a href="#">Chiqish</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <!-- Sidebar -->
+      <nav class="sidebar" id="sidebar">
+        <h2 class="logo">
+          <img src="" alt="" />
+        </h2>
+        <ul class="nav-links">
+          <li><a href="#">Home Page</a></li>
+          <li><a href="../list/list.html">About Us</a></li>
+          <li><a href="../list/list.html">News</a></li>
+          <li><a href="../list/list.html">Courses</a></li>
+          <li><a href="../list/list.html">Lessons</a></li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>

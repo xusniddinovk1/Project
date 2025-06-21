@@ -1,0 +1,143 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* User Bar */
+.userbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #1e293b;
+  padding: 20px 25px;
+  color: white;
+  position: relative;
+}
+
+.username {
+  margin-right: 15px;
+}
+
+/* User Avatar and Dropdown */
+.user-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #38bdf8;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  color: #1e293b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.dropdown ul {
+  list-style: none;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #1e293b;
+  transition: background 0.2s;
+}
+
+.dropdown li a:hover {
+  background-color: #e2e8f0;
+}
+.container {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #1e293b;
+  color: white;
+  height: 100vh;
+  padding: 15px;
+  position: fixed;
+  transition: transform 0.3s ease;
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 20px 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: #38bdf8;
+}
+
+/* Main content */
+.main {
+  margin-left: 250px;
+  padding: 20px;
+  flex-grow: 1;
+  transition: margin-left 0.3s ease;
+}
+
+/* Toggle Button for small screens */
+.toggle-btn {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #1e293b;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .toggle-btn {
+    display: block;
+  }
+}

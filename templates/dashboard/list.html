@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - List</title>
+    <link rel="stylesheet" href="list.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Admin Panel</h1>
+      <nav>
+        <a href="list.html">List</a>
+        <a href="form.html">Add New</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h2>Items List</h2>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="itemList">
+          <tr>
+            <td>1</td>
+            <td>Example Item</td>
+            <td>Active</td>
+            <td>
+              <button onclick="editItem()">Edit</button>
+              <button onclick="deleteItem()">Delete</button>
+            </td>
+          </tr>
+          <!-- More rows can go here -->
+        </tbody>
+      </table>
+    </main>
+
+    <script>
+      function editItem() {
+        alert("Edit function here.");
+      }
+
+      function deleteItem() {
+        if (confirm("Are you sure you want to delete this item?")) {
+          alert("Item deleted.");
+        }
+      }
+    </script>
+  </body>
+</html>

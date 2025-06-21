@@ -1,0 +1,68 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* User Bar */
+.userbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #1e293b;
+  padding: 10px 20px;
+  color: white;
+  position: relative;
+}
+
+.username {
+  margin-right: 15px;
+}
+
+/* User Avatar and Dropdown */
+.user-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #38bdf8;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  color: #1e293b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.dropdown ul {
+  list-style: none;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #1e293b;
+  transition: background 0.2s;
+}
+
+.dropdown li a:hover {
+  background-color: #e2e8f0;
+}
