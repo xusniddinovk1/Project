@@ -4,7 +4,7 @@ from django.utils.text import slugify
 
 
 class AboutUs(models.Model):
-    title = models.CharField(max_lenght=100)
+    title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='aboutUs/')
@@ -38,7 +38,7 @@ class Course(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='course')
-    teacher = models.ForeignKey(User, on_delete=models.SET_NULL)
+    teacher = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
