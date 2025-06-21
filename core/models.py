@@ -13,7 +13,7 @@ class AboutUs(models.Model):
 
 class News(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    content = models.TextField()
     image = models.ImageField(upload_to='news/')
 
     def __str__(self):
@@ -21,13 +21,13 @@ class News(models.Model):
 
 
 class Course(models.Model):
-    title = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='course')
     teacher = models.ForeignKey(User, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class Lesson(models.Model):
