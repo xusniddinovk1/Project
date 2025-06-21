@@ -4,29 +4,29 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Login</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="{% static 'dashboard/css/login.css' %}"/>
     <script defer src="{% static 'dashboard/js/login.js' %}"></script>
 </head>
 <body>
 <div class="login-container">
     <div class="login-box">
-        <!-- Welcome + Dark mode -->
+        <!-- Header -->
         <div class="login-header">
-            <h2>Welcome</h2>
+            <h2>Create Account</h2>
             <button class="toggle-theme" id="theme-toggle">🌙</button>
         </div>
 
-        <!-- Error -->
+        <!-- Error message -->
         {% if error %}
         <div class="error-message">
             {{ error }}
         </div>
         {% endif %}
 
-        <form method="post" action="{% url 'login_page' %}">
+        <!-- Signup Form -->
+        <form method="post" action="{% url 'signup_page' %}">
             {% csrf_token %}
-
             <input type="text" name="phone_number" placeholder="Phone Number" required/>
 
             <div class="password-wrapper">
@@ -34,18 +34,19 @@
                 <button type="button" id="toggle-password" class="password-toggle">👁</button>
             </div>
 
-            <label class="remember-label">
-                <input type="checkbox" name="remember_me"/>
-                Remember me
-            </label>
+            <div class="password-wrapper">
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"
+                       required/>
+                <button type="button" id="toggle-confirm" class="password-toggle">👁</button>
+            </div>
 
-            <button type="submit">Sign In</button>
+            <button type="submit">Sign Up</button>
         </form>
 
-        <!-- Links after login -->
+        <!-- Link to login -->
         <div class="login-links">
-            <span>Don't have an account?</span>
-            <a href="{% url 'signup_page' %}">Sign Up</a>
+            <span>Already have an account?</span>
+            <a href="{% url 'login_page' %}">Sign In</a>
         </div>
     </div>
 </div>
