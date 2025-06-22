@@ -5,12 +5,13 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Dashboard with Dark Mode</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"/>
     <script defer src="{% static 'dashboard/js/script.js' %}"></script>
 </head>
 <body>
 <div class="dashboard">
+    <!-- Sidebar -->
     <aside class="sidebar">
         <h2 class="logo">AdminPanel</h2>
         <nav class="nav">
@@ -22,21 +23,20 @@
         </nav>
     </aside>
 
+    <!-- Main -->
     <main class="main-content">
+        <!-- Header -->
         <header class="header">
             <h1>Dashboard Overview</h1>
             <div class="header-right">
-                <button class="toggle-theme">🌙</button>
+                <button class="toggle-theme" id="theme-toggle">🌙</button>
 
-                <!-- 👤 Userbar -->
-                <div class="userbar">
-                    <img
-                            src="https://i.pravatar.cc/32"
-                            alt="User Avatar"
-                            class="avatar"
-                    />
+                <!-- Userbar -->
+                <div class="userbar" id="userbar">
+                    <img src="https://i.pravatar.cc/32" alt="User Avatar" class="avatar"/>
                     <span class="username" id="username">{{ request.user }}</span>
-                    <!-- faqat bu bosiladi -->
+
+                    <!-- Dropdown (hidden by default) -->
                     <div class="dropdown" id="user-dropdown">
                         <ul class="dropdown-menu">
                             <li><a href="#">My Profile</a></li>
@@ -48,6 +48,7 @@
             </div>
         </header>
 
+        <!-- Dashboard Cards -->
         <section class="cards">
             <div class="card">
                 <h3>News</h3>
@@ -60,6 +61,38 @@
             <div class="card">
                 <h3>Lessons</h3>
                 <p>{{ count.lessons }}</p>
+            </div>
+            <div class="card highlight">
+                <h3>New Users</h3>
+                <p>{{ count.users }}</p>
+            </div>
+            <div class="card">
+                <h3>Messages</h3>
+                <p>{{ count.messages }}</p>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="actions-grid">
+                <a href="{% url 'news_create' %}" class="action-button">➕ Add News</a>
+                <a href="{% url 'course_create' %}" class="action-button">📚 Add Course</a>
+                <a href="{% url 'lesson_create' %}" class="action-button">🎓 Add Lesson</a>
+            </div>
+        </section>
+
+        <section class="kpis">
+            <div class="kpi up">
+                <h4>Users Today</h4>
+                <p>+12</p>
+            </div>
+            <div class="kpi down">
+                <h4>Course Signups</h4>
+                <p>-3</p>
+            </div>
+            <div class="kpi neutral">
+                <h4>Active Courses</h4>
+                <p>16</p>
             </div>
         </section>
     </main>

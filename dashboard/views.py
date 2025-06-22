@@ -95,3 +95,167 @@ def home_page(request):
         }
     }
     return render(request, 'dashboard/index.html', ctx)
+
+
+# ================= News =================
+def about_us_list(request):
+    AboutUs.objects.alL()
+    ctx = {
+        'text': text
+    }
+    return render(request, 'dashboard/about_us/list.html', ctx)
+
+
+def about_us_create(request):
+    model = AboutUs()
+    form = AboutUsForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('about_us_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/about_us/form.html', ctx)
+
+
+def about_us_edit(request, pk):
+    model = AboutUs.objects.get(pk=pk)
+    form = AboutUsForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('about_us_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/about_us/form.html', ctx)
+
+
+def about_us_delete(request, pk):
+    model = AboutUs.objects.get(pk=pk)
+    model.delete()
+    return redirect('about_us_list')
+
+
+# ================= News =================
+def news_list(request):
+    news_item = News.objects.alL()
+    ctx = {
+        'news_item': news_item
+    }
+    return render(request, 'dashboard/news/list.html', ctx)
+
+
+def news_create(request):
+    model = News()
+    form = NewsForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('news_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/news/form.html', ctx)
+
+
+def news_edit(request, pk):
+    model = News.objects.get(pk=pk)
+    form = NewsForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('news_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/news/form.html', ctx)
+
+
+def news_delete(request, pk):
+    model = News.objects.get(pk=pk)
+    model.delete()
+    return redirect('news_list')
+
+
+# ================= Courses =================
+def courses_list(request):
+    courses = Course.objects.alL()
+    ctx = {
+        'courses': courses
+    }
+    return render(request, 'dashboard/course/list.html', ctx)
+
+
+def courses_create(request):
+    model = Course()
+    form = CourseForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('courses_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/course/form.html', ctx)
+
+
+def courses_edit(request, pk):
+    model = Course.objects.get(pk=pk)
+    form = CourseForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('courses_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/course/form.html', ctx)
+
+
+def courses_delete(request, pk):
+    model = News.objects.get(pk=pk)
+    model.delete()
+    return redirect('courses_list')
+
+
+# ================= Lessons =================
+def lessons_list(request):
+    lessons = Lesson.objects.alL()
+    ctx = {
+        'lessons': lessons
+    }
+    return render(request, 'dashboard/lesson/list.html', ctx)
+
+
+def lessons_create(request):
+    model = Lesson()
+    form = LessonForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('lessons_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/lesson/form.html', ctx)
+
+
+def lessons_edit(request, pk):
+    model = Lesson.objects.get(pk=pk)
+    form = LessonForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('lessons_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/lesson/form.html', ctx)
+
+
+def lessons_delete(request, pk):
+    model = Lesson.objects.get(pk=pk)
+    model.delete()
+    return redirect('lessons_list')

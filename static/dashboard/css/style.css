@@ -1,3 +1,4 @@
+/* ======= THEME COLORS ======= */
 :root {
   --bg-color: #f4f7fa;
   --text-color: #333;
@@ -18,6 +19,7 @@
   --header-bg: #1f1f1f;
 }
 
+/* ======= RESET & BASE ======= */
 * {
   margin: 0;
   padding: 0;
@@ -29,17 +31,114 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ======= LAYOUT ======= */
 .dashboard {
   display: flex;
   height: 100vh;
+  width: 100%;
 }
+
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-link);
+  padding: 1rem;
+  transition: left 0.3s ease, background-color 0.3s;
+  z-index: 1000;
+}
+
+.sidebar .logo {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  padding: 0.75rem;
+  border-radius: 5px;
+  color: var(--sidebar-link);
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--sidebar-hover);
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  transition: background-color 0.3s;
+}
+
+/* ======= HEADER ======= */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-bg);
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toggle-theme,
+.toggle-sidebar {
+  font-size: 1.4rem;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* ======== Dashboard Overview ======*/
+.kpis {
+  display: flex;
+  gap: 1rem;
+}
+.kpi {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--card-bg);
+  text-align: center;
+}
+.kpi.up p {
+  color: green;
+}
+.kpi.down p {
+  color: red;
+}
+/* ======== Dashboard Overview ======*/
+/* ======= USERBAR & DROPDOWN ======= */
 .userbar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   position: relative;
+  cursor: pointer;
 }
 
 .avatar {
@@ -50,18 +149,6 @@ body {
 
 .username {
   font-weight: 500;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-toggle {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  color: var(--text-color);
 }
 
 .dropdown-menu {
@@ -75,7 +162,9 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   min-width: 140px;
-  z-index: 1000;
+  z-index: 1100;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .dropdown-menu li a {
@@ -90,72 +179,11 @@ body {
   background-color: var(--sidebar-hover);
 }
 
-.dropdown.open .dropdown-menu {
+#user-dropdown.show .dropdown-menu {
   display: block;
 }
-/* Show dropdown menu when .open is active */
-#user-dropdown.open .dropdown-menu {
-  display: block;
-}
-.sidebar {
-  width: 250px;
-  background-color: var(--sidebar-bg);
-  color: var(--sidebar-link);
-  padding: 1rem;
-  transition: left 0.3s ease;
-}
 
-.logo {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.nav {
-  display: flex;
-  flex-direction: column;
-}
-
-.nav-link {
-  color: var(--sidebar-link);
-  text-decoration: none;
-  padding: 0.75rem;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  background-color: var(--sidebar-hover);
-}
-
-.main-content {
-  flex: 1;
-  padding: 1rem;
-  overflow-y: auto;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--header-bg);
-  margin-bottom: 1.5rem;
-}
-
-.header-right {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.toggle-sidebar,
-.toggle-theme {
-  font-size: 1.2rem;
-  background: none;
-  border: none;
-  color: var(--text-color);
-  cursor: pointer;
-}
-
+/* ======= CARDS ======= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -167,21 +195,31 @@ body {
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, background-color 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.3s, background-color 0.3s;
 }
 
 .card:hover {
   transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive */
+.card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* ======= RESPONSIVE ======= */
 @media (max-width: 768px) {
   .sidebar {
     position: absolute;
     left: -250px;
     top: 0;
     height: 100%;
-    z-index: 1000;
   }
 
   .sidebar.open {
@@ -190,5 +228,11 @@ body {
 
   .toggle-sidebar {
     display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards {
+    grid-template-columns: 1fr;
   }
 }
