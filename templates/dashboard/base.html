@@ -34,9 +34,9 @@
         <header class="header">
             <h1>{% block page_header %}Boshqaruv paneli{% endblock %}</h1>
             <div class="header-right">
-                <button class="toggle-theme" id="theme-toggle">🌙</button>
 
                 {% if show_userbar %}
+                <button class="toggle-theme" id="theme-toggle">🌙</button>
                 <div class="userbar" id="userbar">
                     <img src="https://i.pravatar.cc/32" alt="User Avatar" class="avatar"/>
                     <span class="username">{{ request.user }}</span>

@@ -37,11 +37,14 @@ body {
   display: flex;
   height: 100vh;
 }
+/* .userbar ni position: relative qilib qolamiz */
 .userbar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   position: relative;
+  cursor: pointer;
+  z-index: 1; /* Pastroq z-index */
 }
 
 .avatar {
@@ -50,34 +53,25 @@ body {
   border-radius: 50%;
 }
 
-.username {
-  font-weight: 500;
-}
-
+/* .dropdown menyusi alohida qatlamda pastga tushadi */
 .dropdown {
-  position: relative;
+  position: absolute;
+  top: 100%; /* userbar'dan pastga */
+  right: 0;
+  z-index: 10;
 }
-
-.dropdown-toggle {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  color: var(--text-color);
-}
-
+/* .dropdown-menu'ga quyidagi o'zgarishlar */
 .dropdown-menu {
   display: none;
-  position: absolute;
-  top: 120%;
-  right: 0;
-  background-color: var(--card-bg);
-  color: var(--text-color);
+  background-color: var(--card-bg, white);
+  color: var(--text-color, black);
   list-style: none;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   min-width: 140px;
-  z-index: 1000;
+  padding: 0;
+  margin-top: 0.5rem;
+  z-index: 9999;
 }
 
 .dropdown-menu li a {
@@ -85,18 +79,13 @@ body {
   padding: 10px;
   text-decoration: none;
   color: inherit;
-  transition: background 0.2s;
 }
 
 .dropdown-menu li a:hover {
-  background-color: var(--sidebar-hover);
+  background-color: var(--sidebar-hover, #eee);
 }
 
-.dropdown.open .dropdown-menu {
-  display: block;
-}
-/* Show dropdown menu when .open is active */
-#user-dropdown.open .dropdown-menu {
+.dropdown.show .dropdown-menu {
   display: block;
 }
 .sidebar {
@@ -113,10 +102,12 @@ body {
   box-sizing: border-box;
 }
 .main-content {
-  margin-left: 250px; /* sidebar kengligi bilan bir xil */
+  margin-left: 250px; /* sidebar kengligi */
   flex-grow: 1;
-  padding: 1rem;
+  padding: 1rem; /* barcha tarafdan 1rem */
   overflow-x: auto;
+  min-height: 100vh;
+  height: auto;
 }
 .logo {
   text-align: center;

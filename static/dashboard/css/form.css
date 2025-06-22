@@ -7,17 +7,6 @@
   --card-bg: #ffffff;
   --border: #e5e7eb;
 }
-
-[data-theme="dark"] {
-  --bg: #1f2937;
-  --fg: #f3f4f6;
-  --primary: #3b82f6;
-  --danger: #f87171;
-  --gray: #6b7280;
-  --card-bg: #111827;
-  --border: #374151;
-}
-
 /* === BASE === */
 * {
   margin: 0;
@@ -25,24 +14,31 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: var(--bg);
-  color: var(--fg);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  line-height: 1.6;
-  padding: 2rem 1rem;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 /* === FORM CONTAINER === */
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--fg);
+}
+
 .form-container {
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto; /* markazlashtirish */
+  padding: 2rem; /* ichki bo'sh joy */
   background-color: var(--card-bg);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: visible; /* scroll bo‘lmasligi uchun */
+  margin-top: 0; /* tepasi bilan tenglashtirish uchun */
 }
 
 .form-container h2 {
@@ -51,8 +47,25 @@ body {
   font-size: 1.8rem;
   color: var(--fg);
 }
-
+.form-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap; /* kichik ekranda qulaylik uchun */
+}
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
 /* === FORM ELEMENTS === */
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
 .styled-form .form-group {
   margin-bottom: 1.5rem;
 }
@@ -129,20 +142,11 @@ body {
 .cancel-btn:hover {
   background-color: #6b7280;
 }
-
-/* === THEME TOGGLE === */
-.theme-toggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-  color: var(--fg);
-  z-index: 10;
+.submit-btn,
+.cancel-btn {
+  flex: 1;
+  text-align: center;
 }
-
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
   .form-container {
@@ -154,5 +158,20 @@ body {
     width: 100%;
     margin-top: 1rem;
     margin-left: 0;
+  }
+}
+@media (max-width: 600px) {
+  .form-buttons {
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
   }
 }
