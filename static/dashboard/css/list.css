@@ -70,45 +70,69 @@ body {
   opacity: 0.9;
 }
 
-/* === TABLE === */
+/* === TABLE WRAPPER === */
+/* Jadval konteyneri ekranga to‘liq moslashsin */
 .table-wrapper {
+  width: 100%;
   overflow-x: auto;
+  box-sizing: border-box;
 }
 
+/* Jadval ustunlari siqilmasin */
 .table {
   width: 100%;
+  table-layout: auto;
+  min-width: 100%;
   border-collapse: collapse;
   background-color: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
+/* Jadval ustunlarining matni siqilmasligi uchun */
+.table th {
+  text-align: center !important;
+}
 .table th,
 .table td {
   padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
+  white-space: normal; /* Hujayra ichida so‘zlar bo‘linadi */
+  border: 1px solid var(--border); /* Ustunlar orasidagi chiziqlar */
+  overflow: visible;
+  text-overflow: unset;
   vertical-align: middle;
+  text-align: left;
 }
 
-.table th {
-  background-color: rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="dark"] .table th {
-  background-color: rgba(255, 255, 255, 0.05);
+/* Tavsif ustuniga kengroq joy */
+.table td.description,
+.table th.description {
+  width: 300px;
 }
 
 .table img {
-  width: 60px;
-  height: auto;
-  border-radius: 6px;
+  width: 100px;
+  height: 60px;
   object-fit: cover;
+  border-radius: 6px;
+  display: block;
 }
-
+.table td.created,
+.table th.created {
+  min-width: 160px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 600px;
+  }
+
   .table th,
   .table td {
     padding: 0.7rem;
