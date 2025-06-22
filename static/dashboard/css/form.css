@@ -1,0 +1,158 @@
+:root {
+  --bg: #f9fafb;
+  --fg: #111827;
+  --primary: #2563eb;
+  --danger: #ef4444;
+  --gray: #9ca3af;
+  --card-bg: #ffffff;
+  --border: #e5e7eb;
+}
+
+[data-theme="dark"] {
+  --bg: #1f2937;
+  --fg: #f3f4f6;
+  --primary: #3b82f6;
+  --danger: #f87171;
+  --gray: #6b7280;
+  --card-bg: #111827;
+  --border: #374151;
+}
+
+/* === BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
+
+/* === FORM CONTAINER === */
+.form-container {
+  max-width: 600px;
+  margin: auto;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: var(--fg);
+}
+
+/* === FORM ELEMENTS === */
+.styled-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.styled-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.styled-form input,
+.styled-form select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+.styled-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  resize: vertical;
+  min-height: 120px; /* 👈 faqat textarea uchun ishlasin */
+}
+
+.styled-form input:focus,
+.styled-form textarea:focus,
+.styled-form select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* === BUTTONS === */
+.submit-btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.cancel-btn {
+  margin-left: 1rem;
+  background-color: var(--gray);
+  color: white;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #6b7280;
+}
+
+/* === THEME TOGGLE === */
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--fg);
+  z-index: 10;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+}

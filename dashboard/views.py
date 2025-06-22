@@ -83,23 +83,28 @@ def logout_page(request):
 
 @login_required_decorator
 def home_page(request):
+    users = User.objects.all()
     news = News.objects.all()
     courses = Course.objects.all()
     lessons = Lesson.objects.all()
 
     ctx = {
         "count": {
+            'users': len(users),
             'news': len(news),
             'courses': len(courses),
             'lessons': len(lessons),
-        }
+        },
+        'latest_news': News.objects.order_by('-created_at')[:3],
+        'latest_courses': Course.objects.order_by('-created_at')[:3],
+        'latest_lessons': Lesson.objects.order_by('-created_at')[:3],
     }
     return render(request, 'dashboard/index.html', ctx)
 
 
 # ================= News =================
 def about_us_list(request):
-    AboutUs.objects.alL()
+    text = AboutUs.objects.all()
     ctx = {
         'text': text
     }
@@ -108,32 +113,32 @@ def about_us_list(request):
 
 def about_us_create(request):
     model = AboutUs()
-    form = AboutUsForm(request.POST or None, instance=model)
+    form = AboutUsForm(request.POST or None, request.FILES or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
         return redirect('about_us_list')
     ctx = {
         'model': model,
-        'form': form
+        'form': form,
     }
     return render(request, 'dashboard/about_us/form.html', ctx)
 
 
-def about_us_edit(request, pk):
-    model = AboutUs.objects.get(pk=pk)
-    form = AboutUsForm(request.POST or None, instance=model)
+def about_us_edit(request, slug):
+    model = AboutUs.objects.get(slug=slug)
+    form = AboutUsForm(request.POST or None, request.FILES, instance=model)
     if request.POST and form.is_valid():
         form.save()
         return redirect('about_us_list')
     ctx = {
         'model': model,
-        'form': form
+        'form': form,
     }
     return render(request, 'dashboard/about_us/form.html', ctx)
 
 
-def about_us_delete(request, pk):
-    model = AboutUs.objects.get(pk=pk)
+def about_us_delete(request, slug):
+    model = AboutUs.objects.get(slug=slug)
     model.delete()
     return redirect('about_us_list')
 
@@ -160,8 +165,8 @@ def news_create(request):
     return render(request, 'dashboard/news/form.html', ctx)
 
 
-def news_edit(request, pk):
-    model = News.objects.get(pk=pk)
+def news_edit(request, slug):
+    model = News.objects.get(slug=slug)
     form = NewsForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
@@ -173,8 +178,8 @@ def news_edit(request, pk):
     return render(request, 'dashboard/news/form.html', ctx)
 
 
-def news_delete(request, pk):
-    model = News.objects.get(pk=pk)
+def news_delete(request, slug):
+    model = News.objects.get(slug=slug)
     model.delete()
     return redirect('news_list')
 
@@ -201,8 +206,8 @@ def courses_create(request):
     return render(request, 'dashboard/course/form.html', ctx)
 
 
-def courses_edit(request, pk):
-    model = Course.objects.get(pk=pk)
+def courses_edit(request, slug):
+    model = Course.objects.get(slug=slug)
     form = CourseForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
@@ -214,8 +219,8 @@ def courses_edit(request, pk):
     return render(request, 'dashboard/course/form.html', ctx)
 
 
-def courses_delete(request, pk):
-    model = News.objects.get(pk=pk)
+def courses_delete(request, slug):
+    model = News.objects.get(slug=slug)
     model.delete()
     return redirect('courses_list')
 
@@ -242,8 +247,8 @@ def lessons_create(request):
     return render(request, 'dashboard/lesson/form.html', ctx)
 
 
-def lessons_edit(request, pk):
-    model = Lesson.objects.get(pk=pk)
+def lessons_edit(request, slug):
+    model = Lesson.objects.get(slug=slug)
     form = LessonForm(request.POST or None, instance=model)
     if request.POST and form.is_valid():
         form.save()
@@ -255,7 +260,7 @@ def lessons_edit(request, pk):
     return render(request, 'dashboard/lesson/form.html', ctx)
 
 
-def lessons_delete(request, pk):
-    model = Lesson.objects.get(pk=pk)
+def lessons_delete(request, slug):
+    model = Lesson.objects.get(slug=slug)
     model.delete()
     return redirect('lessons_list')

@@ -16,27 +16,23 @@
         <h2 class="logo">AdminPanel</h2>
         <nav class="nav">
             <a href="#" class="nav-link active">Dashboard</a>
-            <a href="#" class="nav-link">About Us</a>
-            <a href="#" class="nav-link">News</a>
-            <a href="#" class="nav-link">Courses</a>
-            <a href="#" class="nav-link">Lessons</a>
+            <a href="{% url 'about_us_list' %}" class="nav-link">About Us</a>
+            <a href="{% url 'news_list' %}" class="nav-link">News</a>
+            <a href="{% url 'courses_list' %}" class="nav-link">Courses</a>
+            <a href="{% url 'lessons_list' %}" class="nav-link">Lessons</a>
         </nav>
     </aside>
 
-    <!-- Main -->
+    <!-- Main Content -->
     <main class="main-content">
         <!-- Header -->
         <header class="header">
-            <h1>Dashboard Overview</h1>
+            <h1>Boshqaruv paneli</h1>
             <div class="header-right">
                 <button class="toggle-theme" id="theme-toggle">🌙</button>
-
-                <!-- Userbar -->
                 <div class="userbar" id="userbar">
                     <img src="https://i.pravatar.cc/32" alt="User Avatar" class="avatar"/>
                     <span class="username" id="username">{{ request.user }}</span>
-
-                    <!-- Dropdown (hidden by default) -->
                     <div class="dropdown" id="user-dropdown">
                         <ul class="dropdown-menu">
                             <li><a href="#">My Profile</a></li>
@@ -48,51 +44,78 @@
             </div>
         </header>
 
-        <!-- Dashboard Cards -->
-        <section class="cards">
-            <div class="card">
-                <h3>News</h3>
-                <p>{{ count.news }}</p>
-            </div>
-            <div class="card">
-                <h3>Courses</h3>
-                <p>{{ count.courses }}</p>
-            </div>
-            <div class="card">
-                <h3>Lessons</h3>
-                <p>{{ count.lessons }}</p>
-            </div>
-            <div class="card highlight">
-                <h3>New Users</h3>
-                <p>{{ count.users }}</p>
-            </div>
-            <div class="card">
-                <h3>Messages</h3>
-                <p>{{ count.messages }}</p>
+        <!-- Dashboard Overview Cards -->
+        <section class="overview">
+            <h2>Dashboard Overview</h2>
+            <div class="cards">
+                <div class="card"><h3>News</h3>
+                    <p>{{ count.news }}</p></div>
+                <div class="card"><h3>Courses</h3>
+                    <p>{{ count.courses }}</p></div>
+                <div class="card"><h3>Lessons</h3>
+                    <p>{{ count.lessons }}</p></div>
+                <div class="card highlight"><h3>New Users</h3>
+                    <p>{{ count.users }}</p></div>
             </div>
         </section>
 
-        <section class="quick-actions">
-            <h2>Quick Actions</h2>
-            <div class="actions-grid">
-                <a href="{% url 'news_create' %}" class="action-button">➕ Add News</a>
-                <a href="{% url 'course_create' %}" class="action-button">📚 Add Course</a>
-                <a href="{% url 'lesson_create' %}" class="action-button">🎓 Add Lesson</a>
+        <!-- News Section -->
+        <section class="media-section">
+            <h2>Oxirgi yangiliklar</h2>
+            <div class="media-grid">
+                {% for item in latest_news %}
+                <div class="media-card">
+                    <img src="{{ item.image.url }}" class="media-image"/>
+                    <div class="media-content">
+                        <h3>{{ item.title }}</h3>
+                        <p class="desc">{{ item.description|truncatechars:80 }}</p>
+                        <a href="#" class="media-button">Batafsil o‘qish</a>
+                        <p class="source">Manba: {{ item.source }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                <p>Yangiliklar topilmadi.</p>
+                {% endfor %}
             </div>
         </section>
 
-        <section class="kpis">
-            <div class="kpi up">
-                <h4>Users Today</h4>
-                <p>+12</p>
+        <!-- Courses Section -->
+        <section class="media-section">
+            <h2>Kurslar</h2>
+            <div class="media-grid">
+                {% for course in latest_courses %}
+                <div class="media-card">
+                    <img src="{{ course.image.url }}" class="media-image"/>
+                    <div class="media-content">
+                        <h3>{{ course.title }}</h3>
+                        <p class="desc">{{ course.description|truncatechars:80 }}</p>
+                        <a href="#" class="media-button">Kursni ko‘rish</a>
+                        <p class="source">O‘qituvchi: {{ course.teacher }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                <p>Kurslar topilmadi.</p>
+                {% endfor %}
             </div>
-            <div class="kpi down">
-                <h4>Course Signups</h4>
-                <p>-3</p>
-            </div>
-            <div class="kpi neutral">
-                <h4>Active Courses</h4>
-                <p>16</p>
+        </section>
+
+        <!-- Lessons Section -->
+        <section class="media-section">
+            <h2>Darslar</h2>
+            <div class="media-grid">
+                {% for lesson in latest_lessons %}
+                <div class="media-card">
+                    <img src="{{ lesson.thumbnail.url }}" class="media-image"/>
+                    <div class="media-content">
+                        <h3>{{ lesson.title }}</h3>
+                        <p class="desc">{{ lesson.summary|truncatechars:80 }}</p>
+                        <a href="#" class="media-button">Darsga o‘tish</a>
+                        <p class="source">Kurs: {{ lesson.course.title }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                <p>Darslar topilmadi.</p>
+                {% endfor %}
             </div>
         </section>
     </main>

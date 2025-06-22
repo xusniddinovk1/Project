@@ -10,6 +10,7 @@ class AboutUs(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='aboutUs/')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -25,6 +26,7 @@ class News(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     content = models.TextField()
     image = models.ImageField(upload_to='news/')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -41,6 +43,7 @@ class Course(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='course')
     teacher = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -60,6 +63,7 @@ class Lesson(models.Model):
     image1 = models.ImageField(upload_to='lessons/')
     description2 = models.TextField()
     image2 = models.ImageField(upload_to='lessons/')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
