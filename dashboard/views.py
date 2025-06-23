@@ -145,7 +145,7 @@ def about_us_delete(request, slug):
 
 # ================= News =================
 def news_list(request):
-    news_item = News.objects.alL()
+    news_item = News.objects.all()
     ctx = {
         'news_item': news_item
     }
@@ -154,7 +154,7 @@ def news_list(request):
 
 def news_create(request):
     model = News()
-    form = NewsForm(request.POST or None, instance=model)
+    form = NewsForm(request.POST or None, request.FILES, instance=model)
     if request.POST and form.is_valid():
         form.save()
         return redirect('news_list')
@@ -167,7 +167,7 @@ def news_create(request):
 
 def news_edit(request, slug):
     model = News.objects.get(slug=slug)
-    form = NewsForm(request.POST or None, instance=model)
+    form = NewsForm(request.POST or None, request.FILES, instance=model)
     if request.POST and form.is_valid():
         form.save()
         return redirect('news_list')
@@ -186,7 +186,7 @@ def news_delete(request, slug):
 
 # ================= Courses =================
 def courses_list(request):
-    courses = Course.objects.alL()
+    courses = Course.objects.all()
     ctx = {
         'courses': courses
     }
@@ -195,7 +195,7 @@ def courses_list(request):
 
 def courses_create(request):
     model = Course()
-    form = CourseForm(request.POST or None, instance=model)
+    form = CourseForm(request.POST or None, request.FILES, instance=model)
     if request.POST and form.is_valid():
         form.save()
         return redirect('courses_list')
@@ -208,7 +208,7 @@ def courses_create(request):
 
 def courses_edit(request, slug):
     model = Course.objects.get(slug=slug)
-    form = CourseForm(request.POST or None, instance=model)
+    form = CourseForm(request.POST or None, request.FILES, instance=model)
     if request.POST and form.is_valid():
         form.save()
         return redirect('courses_list')
@@ -227,7 +227,7 @@ def courses_delete(request, slug):
 
 # ================= Lessons =================
 def lessons_list(request):
-    lessons = Lesson.objects.alL()
+    lessons = Lesson.objects.all()
     ctx = {
         'lessons': lessons
     }
@@ -236,7 +236,7 @@ def lessons_list(request):
 
 def lessons_create(request):
     model = Lesson()
-    form = LessonForm(request.POST or None, instance=model)
+    form = LessonForm(request.POST or None, request.FILES, instance=model)
     if request.POST and form.is_valid():
         form.save()
         return redirect('lessons_list')
@@ -249,7 +249,7 @@ def lessons_create(request):
 
 def lessons_edit(request, slug):
     model = Lesson.objects.get(slug=slug)
-    form = LessonForm(request.POST or None, instance=model)
+    form = LessonForm(request.POST or None, request.FILES, instance=model)
     if request.POST and form.is_valid():
         form.save()
         return redirect('lessons_list')

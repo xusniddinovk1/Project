@@ -2,7 +2,7 @@
 {% load humanize %}
 
 {% block title %}About Us List{% endblock %}
-{% block page_header %}About Us List{% endblock %}
+{% block page_header %}Lessons List{% endblock %}
 
 {% block content %}
 <div class="container center-content">
@@ -22,7 +22,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for txt in text %}
+            {% for txt in lessons %}
             <tr>
                 <td class="title">{{ txt.title }}</td>
                 <td class="slug">{{ txt.slug }}</td>
@@ -37,8 +37,8 @@
                 <td class="created">{{ txt.created_at|date:"Y-m-d H:i" }}</td>
 
                 <td class="actions">
-                    <a href="{% url 'about_us_edit' txt.slug %}" class="btn btn-warning btn-sm">✏️</a>
-                    <a href="{% url 'about_us_delete' txt.slug %}" class="btn btn-danger btn-sm">🗑️</a>
+                    <a href="{% url 'lessons_edit' txt.slug %}" class="btn btn-warning btn-sm">✏️</a>
+                    <a href="{% url 'lessons_delete' txt.slug %}" class="btn btn-danger btn-sm">🗑️</a>
                 </td>
             </tr>
             {% empty %}

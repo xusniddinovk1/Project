@@ -5,7 +5,7 @@
 {% with show_userbar=False %}
 {% block content %}
 <div class="form-container">
-    <h2 class="form-title">About Us</h2>  <!-- Qo‘shilgan sarlavha -->
+    <h2 class="form-title">Lessons</h2>  <!-- Qo‘shilgan sarlavha -->
     <form method="post" enctype="multipart/form-data" class="styled-form">
         {% csrf_token %}
         {{ form.non_field_errors }}
@@ -25,9 +25,28 @@
             {{ form.image }}
         </div>
 
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Tavsif</label>
+            {{ form.description1 }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.image.id_for_label }}">Rasm</label>
+            {{ form.image1 }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Tavsif</label>
+            {{ form.description2 }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.image.id_for_label }}">Rasm</label>
+            {{ form.image2 }}
+        </div>
         <div class="form-buttons">
             <button type="submit" class="submit-btn">💾 Saqlash</button>
-            <a href="{% url 'about_us_list' %}" class="cancel-btn">⬅️ Orqaga</a>
+            <a href="{% url 'lessons_list' %}" class="cancel-btn">⬅️ Orqaga</a>
         </div>
     </form>
 </div>

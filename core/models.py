@@ -1,8 +1,5 @@
-from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
-
-User = get_user_model()
 
 
 class AboutUs(models.Model):
@@ -19,6 +16,15 @@ class AboutUs(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Teacher(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=13, unique=True)
+
+    def __str__(self):
+        return self.first_name
 
 
 class News(models.Model):
@@ -42,7 +48,7 @@ class Course(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='course')
-    teacher = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
@@ -59,10 +65,6 @@ class Lesson(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='lessons/')
-    description1 = models.TextField()
-    image1 = models.ImageField(upload_to='lessons/')
-    description2 = models.TextField()
-    image2 = models.ImageField(upload_to='lessons/')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
