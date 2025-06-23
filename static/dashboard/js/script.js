@@ -18,14 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // === Dropdown toggle ===
-  userbar.addEventListener("click", (e) => {
-    e.stopPropagation();
-    userDropdown.classList.toggle("open"); // <-- class qo‘shilayotgan joy
-  });
+  if (userbar && userDropdown) {
+    userbar.addEventListener("click", (e) => {
+      e.stopPropagation();
+      userDropdown.classList.toggle("open");
+    });
 
-  document.addEventListener("click", (e) => {
-    if (!userbar.contains(e.target)) {
-      userDropdown.classList.remove("open");
-    }
-  });
+    document.addEventListener("click", (e) => {
+      if (!userbar.contains(e.target)) {
+        userDropdown.classList.remove("open");
+      }
+    });
+  }
 });

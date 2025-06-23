@@ -6,11 +6,14 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="{% static 'dashboard/js/script.js' %}"></script>
 </head>
 <body>
 <div class="dashboard">
+
     <!-- Sidebar -->
     <aside class="sidebar">
         <h2 class="logo">AdminPanel</h2>
@@ -25,6 +28,7 @@
 
     <!-- Main Content -->
     <main class="main-content">
+
         <!-- Header -->
         <header class="header">
             <h1>Boshqaruv paneli</h1>
@@ -45,81 +49,54 @@
             </div>
         </header>
 
-        <!-- Dashboard Overview Cards -->
-        <section class="overview">
-            <h2>Dashboard Overview</h2>
-            <div class="cards">
-                <div class="card"><h3>News</h3>
-                    <p>{{ count.news }}</p></div>
-                <div class="card"><h3>Courses</h3>
-                    <p>{{ count.courses }}</p></div>
-                <div class="card"><h3>Lessons</h3>
-                    <p>{{ count.lessons }}</p></div>
-                <div class="card highlight"><h3>New Users</h3>
-                    <p>{{ count.users }}</p></div>
-            </div>
-        </section>
-
-        <!-- News Section -->
-        <section class="media-section">
-            <h2>Oxirgi yangiliklar</h2>
-            <div class="media-grid">
-                {% for item in latest_news %}
-                <div class="media-card">
-                    <img src="{{ item.image.url }}" class="media-image"/>
-                    <div class="media-content">
-                        <h3>{{ item.title }}</h3>
-                        <p class="desc">{{ item.description|truncatechars:80 }}</p>
-                        <a href="#" class="media-button">Batafsil o‘qish</a>
-                        <p class="source">Manba: {{ item.source }}</p>
+        <!-- Cards -->
+        <div class="cards">
+            {% for item in items %}
+            <div class="card">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="text-3xl" style="color: {{ item.color }}">
+                        <i class="fa {{ item.icon }}"></i>
+                    </div>
+                    <div class="text-right">
+                        <h2 class="text-xl font-bold">{{ item.count|intcomma }}</h2>
+                        <p class="text-sm text-gray-500">{{ item.label }}</p>
                     </div>
                 </div>
-                {% empty %}
-                <p>Yangiliklar topilmadi.</p>
-                {% endfor %}
+                <canvas id="chart-{{ forloop.counter }}" height="80"></canvas>
             </div>
-        </section>
-
-        <!-- Courses Section -->
-        <section class="media-section">
-            <h2>Kurslar</h2>
-            <div class="media-grid">
-                {% for course in latest_courses %}
-                <div class="media-card">
-                    <img src="{{ course.image.url }}" class="media-image"/>
-                    <div class="media-content">
-                        <h3>{{ course.title }}</h3>
-                        <p class="desc">{{ course.description|truncatechars:80 }}</p>
-                        <a href="#" class="media-button">Kursni ko‘rish</a>
-                        <p class="source">O‘qituvchi: {{ course.teacher }}</p>
-                    </div>
-                </div>
-                {% empty %}
-                <p>Kurslar topilmadi.</p>
-                {% endfor %}
-            </div>
-        </section>
-
-        <!-- Lessons Section -->
-        <section class="media-section">
-            <h2>Darslar</h2>
-            <div class="media-grid">
-                {% for lesson in latest_lessons %}
-                <div class="media-card">
-                    <img src="{{ lesson.thumbnail.url }}" class="media-image"/>
-                    <div class="media-content">
-                        <h3>{{ lesson.title }}</h3>
-                        <p class="desc">{{ lesson.summary|truncatechars:80 }}</p>
-                        <a href="#" class="media-button">Darsga o‘tish</a>
-                        <p class="source">Kurs: {{ lesson.course.title }}</p>
-                    </div>
-                </div>
-                {% empty %}
-                <p>Darslar topilmadi.</p>
-                {% endfor %}
-            </div>
-        </section>
+            {% endfor %}
+        </div>
     </main>
 </div>
+
+<!-- Chart Rendering -->
+<script>
+    {% for item in items %}
+    const ctx{{ forloop.counter }} = document.getElementById("chart-{{ forloop.counter }}").getContext("2d");
+    new Chart(ctx{{ forloop.counter }}, {
+      type: 'bar',
+      data: {
+        labels: ['A', 'B', 'C'],
+        datasets: [{
+          label: '{{ item.label }}',
+          data: {{ item.chart_data|safe }},
+          backgroundColor: 'rgba(59, 130, 246, 0.6)',
+          borderRadius: 5,
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
+      }
+    });
+    {% endfor %}
+</script>
 </body>
 </html>
+
+

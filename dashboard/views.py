@@ -88,18 +88,37 @@ def home_page(request):
     courses = Course.objects.all()
     lessons = Lesson.objects.all()
 
-    ctx = {
-        "count": {
-            'users': len(users),
-            'news': len(news),
-            'courses': len(courses),
-            'lessons': len(lessons),
+    items = [
+        {
+            "icon": "fa-users",
+            "color": "#3b82f6",  # blue-500
+            "count": users.count(),
+            "label": "Users",
+            "chart_data": [users.count(), users.count() // 2, users.count() // 3]
         },
-        'latest_news': News.objects.order_by('-created_at')[:3],
-        'latest_courses': Course.objects.order_by('-created_at')[:3],
-        'latest_lessons': Lesson.objects.order_by('-created_at')[:3],
-    }
-    return render(request, 'dashboard/index.html', ctx)
+        {
+            "icon": "fa-book",
+            "color": "#10b981",  # green-500
+            "count": news.count(),
+            "label": "News",
+            "chart_data": [news.count(), news.count() // 2, news.count() // 3]
+        },
+        {
+            "icon": "fa-bell",
+            "color": "#ef4444",  # red-500
+            "count": courses.count(),
+            "label": "Courses",
+            "chart_data": [courses.count(), courses.count() // 2, courses.count() // 3]
+        },
+        {
+            "icon": "fa-star",
+            "color": "#facc15",  # yellow-500
+            "count": lessons.count(),
+            "label": "Lessons",
+            "chart_data": [lessons.count(), lessons.count() // 2, lessons.count() // 3]
+        },
+    ]
+    return render(request, 'dashboard/index.html', {'items': items})
 
 
 # ================= News =================
