@@ -35,12 +35,18 @@
             <div class="header-right">
                 <button class="toggle-theme" id="theme-toggle">🌙</button>
                 <div class="userbar" id="userbar">
-                    <img src="https://i.pravatar.cc/32" alt="User Avatar" class="avatar"/>
+                    {% if user.avatar %}
+                    <img src="{{ user.avatar.url }}?v={{ timestamp }}" alt="Avatar"
+                         style="width: 32px; height: 32px; object-fit: cover; border-radius: 50%;">
+                    {% else %}
+                    <img src="https://i.pravatar.cc/100" alt="Default Avatar"
+                         style="border-radius: 50%; margin-bottom: 1rem;">
+                    {% endif %}
                     <span class="username">{{ request.user }}</span>
 
                     <div class="dropdown" id="user-dropdown">
                         <ul class="dropdown-menu">
-                            <li><a href="#">My Profile</a></li>
+                            <li><a href="{% url 'my_profile' %}">My Profile</a></li>
                             <li><a href="#">Settings</a></li>
                             <li><a href="{% url 'logout_page' %}">Logout</a></li>
                         </ul>

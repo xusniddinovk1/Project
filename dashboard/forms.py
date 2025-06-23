@@ -1,5 +1,8 @@
 from core.models import AboutUs, Lesson, Course, News
 from django import forms
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class AboutUsForm(forms.ModelForm):
@@ -57,4 +60,17 @@ class LessonForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'placeholder': 'Enter description of lesson', 'row': 5}),
             'image2': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'}),
 
+        }
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'phone_number', 'email', 'bio', 'avatar']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone number'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter bio'}),
+            'avatar': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
