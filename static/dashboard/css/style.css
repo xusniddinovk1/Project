@@ -385,6 +385,19 @@ body {
 .btn-secondary:hover {
   background-color: #4b5563;
 }
+input, select, textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: border-color 0.2s ease;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
 /* Responsivlik: kichik ekranlarda 2 yoki 1 ta karta */
 @media (max-width: 1024px) {
   .card {

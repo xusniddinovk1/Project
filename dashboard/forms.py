@@ -74,3 +74,11 @@ class ProfileForm(forms.ModelForm):
             'bio': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter bio'}),
             'avatar': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
+
+
+class UserCreateForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, label='Password')
+
+    class Meta:
+        model = User
+        fields = ['username', 'phone_number', 'email', 'bio', 'avatar', 'is_staff', 'is_superuser', 'password']

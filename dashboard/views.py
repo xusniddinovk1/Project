@@ -1,10 +1,12 @@
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.views import PasswordChangeView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 
 from core.models import AboutUs, News, Course, Lesson
-from dashboard.forms import AboutUsForm, NewsForm, CourseForm, LessonForm, ProfileForm
+from dashboard.forms import AboutUsForm, NewsForm, CourseForm, LessonForm, ProfileForm, UserCreateForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -92,6 +94,7 @@ def my_profile(request):
     }
     return render(request, 'dashboard/profile/profile.html', ctx)
 
+
 @login_required_decorator
 def profile_edit(request):
     user = request.user
@@ -114,6 +117,49 @@ def profile_edit(request):
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'dashboard/profile/password_change.html'
     success_url = reverse_lazy('password_change_done')
+
+
+@staff_member_required
+def user_list_view(request):
+    users = User.objects.all().order_by('-date_joined')
+    return render(request, 'dashboard/profile/user_list.html', {'users': users})
+
+
+@staff_member_required
+def user_add_view(request):
+    if request.method == 'POST':
+        form = UserCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.password = make_password(form.cleaned_data['password'])  # Hash password
+            user.save()
+            return redirect('user_list')  # yoki boshqa sahifaga
+    else:
+        form = UserCreateForm()
+
+    return render(request, 'dashboard/profile/user_add.html', {'form': form})
+
+
+@staff_member_required
+def user_edit_view(request, pk):
+    user = User.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_list')
+    else:
+        form = ProfileForm(instance=user)
+
+    return render(request, 'dashboard/users/user_edit.html', {'form': form, 'user_obj': user})
+
+
+@staff_member_required
+def user_delete_view(request, pk):
+    user = User.objects.get(pk=pk)
+    user.delete()
+    return redirect('user_list')
+
 
 @login_required_decorator
 def home_page(request):
