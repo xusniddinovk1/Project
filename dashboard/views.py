@@ -152,7 +152,7 @@ def user_edit_view(request, pk):
     else:
         form = ProfileForm(instance=user)
 
-    return render(request, 'dashboard/users/user_edit.html', {'form': form, 'user_obj': user})
+    return render(request, 'dashboard/profile/user_edit.html', {'form': form, 'user_obj': user})
 
 
 @staff_member_required

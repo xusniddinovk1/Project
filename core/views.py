@@ -1,26 +1,12 @@
 from django.shortcuts import render
-from core.models import AboutUs, News, Lesson, Course, MainPhoto
+from core.models import AboutUs, News, Lesson, Course, MainPhoto, Teacher
 
 
-def home_page(request):
-    about = AboutUs.objects.all()
-    news_list = News.objects.order_by('-created_at')[:3]
-    courses = Course.objects.order_by('-created_at')[:3]
-    lessons = Lesson.objects.order_by('-created_at')[:3]
-
-    context = {
-        'about': about,
-        'news_list': news_list,
-        'courses': courses,
-        'lessons': lessons
-    }
-
-    return render(request, 'core/index.html', context)
+def about_us_view(request):
+    about_list = AboutUs.objects.all()
+    return render(request, 'core/about.html', {'about_list': about_list})
 
 
-def main_photo(request):
-    photo = MainPhoto.objects.first()
-    ctx = {
-        'photo': photo
-    }
-    return render(request, 'core/index.html', ctx)
+def teacher_list(request):
+    teachers = Teacher.objects.all()
+    return render(request, 'core/teachers.html', {'teachers': teachers})
