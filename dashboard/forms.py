@@ -1,4 +1,4 @@
-from core.models import AboutUs, Lesson, Course, News
+from core.models import AboutUs, Lesson, Course, News, Teacher
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -27,6 +27,17 @@ class NewsForm(forms.ModelForm):
             'content': forms.Textarea(
                 attrs={'class': 'form-control', 'placeholder': 'Enter content of news', 'row': 5}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'})
+        }
+
+
+class TeacherForm(forms.ModelForm):
+    class Meta:
+        model = Teacher
+        fields = '__all__'
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter first name'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter last name'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter phone number'}),
         }
 
 
