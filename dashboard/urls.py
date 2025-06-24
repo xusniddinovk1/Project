@@ -13,8 +13,8 @@ urlpatterns = [
 
     path('user/', user_list_view, name='user_list'),
     path('user/add/', user_add_view, name='user_add'),
-    path('user/edit/<int:id>', user_add_view, name='user_edit'),
-    path('user/delete/<int:id>', user_add_view, name='user_delete'),
+    path('user/edit/<int:pk>', user_edit_view, name='user_edit'),
+    path('user/delete/<int:pk>', user_delete_view, name='user_delete'),
 
     path('profile/change/', CustomPasswordChangeView.as_view(), name='change_password'),
     path('profile/password/done', PasswordChangeDoneView.as_view(template_name='dashboard/profile/password_done.html'),
