@@ -22,6 +22,7 @@ class Teacher(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=13, unique=True)
+    image = models.ImageField(upload_to='image/')
 
     def __str__(self):
         return self.first_name

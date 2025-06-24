@@ -30,6 +30,11 @@ urlpatterns = [
     path('news/<slug:slug>/edit/', news_edit, name='news_edit'),
     path('news/<slug:slug>/delete/', news_delete, name='news_delete'),
 
+    path('teachers/', teachers_list, name='teachers_list'),
+    path('teachers/create/', teachers_create, name='teachers_create'),
+    path('teachers/<int:id>/edit/', teachers_edit, name='teachers_edit'),
+    path('teachers/<int:id>/delete/', teachers_delete, name='teachers_delete'),
+
     path('courses/', courses_list, name='courses_list'),
     path('courses/create/', courses_create, name='courses_create'),
     path('courses/<slug:slug>/edit/', courses_edit, name='courses_edit'),

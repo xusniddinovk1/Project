@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 
-from core.models import AboutUs, News, Course, Lesson
-from dashboard.forms import AboutUsForm, NewsForm, CourseForm, LessonForm, ProfileForm, UserCreateForm
+from core.models import AboutUs, News, Course, Lesson, Teacher
+from dashboard.forms import AboutUsForm, NewsForm, CourseForm, LessonForm, ProfileForm, UserCreateForm, TeacherForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -281,6 +281,47 @@ def news_delete(request, slug):
     model = News.objects.get(slug=slug)
     model.delete()
     return redirect('news_list')
+
+
+# ================= Teachers ===============
+def teachers_list(request):
+    teachers = Teacher.objects.all()
+    ctx = {
+        'teachers': teachers
+    }
+    return render(request, 'dashboard/teacher/list.html', ctx)
+
+
+def teachers_create(request):
+    model = Teacher()
+    form = TeacherForm(request.POST or None, request.FILES, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('teachers_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/teacher/form.html', ctx)
+
+
+def teachers_edit(request, slug):
+    model = Teacher.objects.get(slug=slug)
+    form = TeacherForm(request.POST or None, request.FILES, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('teachers_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/teacher/form.html', ctx)
+
+
+def teachers_delete(request, slug):
+    model = Teacher.objects.get(id=id)
+    model.delete()
+    return redirect('teachers_list')
 
 
 # ================= Courses =================

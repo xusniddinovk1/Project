@@ -38,6 +38,7 @@ class TeacherForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter first name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter last name'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter phone number'}),
+            'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'})
         }
 
 
@@ -64,12 +65,6 @@ class LessonForm(forms.ModelForm):
             'description': forms.Textarea(
                 attrs={'class': 'form-control', 'placeholder': 'Enter description of lesson', 'row': 5}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'}),
-            'description1': forms.Textarea(
-                attrs={'class': 'form-control', 'placeholder': 'Enter description of lesson', 'row': 5}),
-            'image1': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'}),
-            'description2': forms.Textarea(
-                attrs={'class': 'form-control', 'placeholder': 'Enter description of lesson', 'row': 5}),
-            'image2': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'}),
 
         }
 

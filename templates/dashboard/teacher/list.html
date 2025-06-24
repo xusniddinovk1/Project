@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% load humanize %}
+
+{% block title %}Teachers List{% endblock %}
+{% block page_header %}Teachers List{% endblock %}
+
+{% block content %}
+<div class="container center-content">
+    <div style="text-align: right; margin-bottom: 1rem;">
+        <a href="{% url 'teachers_create' %}" class="btn btn-success">➕ Yangi bo‘lim qo‘shish</a>
+    </div>
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="first_name">Ismi</th>
+                <th class="last_name">Familiyasi</th>
+                <th class="phone_number">Telefon raqami</th>
+                <th class="image">Rasm</th>
+                <th class="actions">Amallar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for txt in teachers %}
+            <tr>
+                <td class="title">{{ txt.first_name }}</td>
+                <td class="slug">{{ txt.last_name }}</td>
+                <td class="description">{{ txt.phone_number }}</td>
+                <td class="image">
+                    {% if txt.image %}
+                    <img src="{{ txt.image.url }}" alt="Rasm"/>
+                    {% else %}
+                    Yo‘q
+                    {% endif %}
+                </td>
+                <td class="actions">
+                    <a href="{% url 'teachers_edit' txt.id %}" class="btn btn-warning btn-sm">✏️</a>
+                    <a href="{% url 'teachers_delete' txt.id %}" class="btn btn-danger btn-sm">🗑️</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Ma’lumot topilmadi.</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

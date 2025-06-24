@@ -1,0 +1,40 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}{{ form_title }}{% endblock %}
+{% block page_header %}{{ form_title }}{% endblock %}
+{% with show_userbar=False %}
+{% block content %}
+<div class="form-container">
+    <h2 class="form-title">Teachers</h2>  <!-- Qo‘shilgan sarlavha -->
+    <form method="post" enctype="multipart/form-data" class="styled-form">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Ismi</label>
+            {{ form.first_name }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Familiyasi</label>
+            {{ form.last_name }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.image.id_for_label }}">Telefon raqami</label>
+            {{ form.phone_number }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.image.id_for_label }}">Rasmi</label>
+            {{ form.image }}
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" class="submit-btn">💾 Saqlash</button>
+            <a href="{% url 'teachers_list' %}" class="cancel-btn">⬅️ Orqaga</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+{% endwith %}
