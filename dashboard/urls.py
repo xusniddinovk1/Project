@@ -45,4 +45,9 @@ urlpatterns = [
     path('lessons/<slug:slug>/edit/', lessons_edit, name='lessons_edit'),
     path('lessons/<slug:slug>/delete/', lessons_delete, name='lessons_delete'),
 
+    path('photo/', photo_list, name='photo_list'),
+    path('photo/create/', photo_create, name='photo_create'),
+    path('photo/<int:id>/edit/', photo_edit, name='photo_edit'),
+    path('photo/<int:id>/delete/', photo_delete, name='photo_delete'),
+
 ]

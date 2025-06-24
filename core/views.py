@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.models import AboutUs, News, Lesson, Course
+from core.models import AboutUs, News, Lesson, Course, MainPhoto
 
 
 def home_page(request):
@@ -16,3 +16,11 @@ def home_page(request):
     }
 
     return render(request, 'core/index.html', context)
+
+
+def main_photo(request):
+    photo = MainPhoto.objects.first()
+    ctx = {
+        'photo': photo
+    }
+    return render(request, 'core/index.html', ctx)

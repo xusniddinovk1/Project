@@ -5,8 +5,9 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 
-from core.models import AboutUs, News, Course, Lesson, Teacher
-from dashboard.forms import AboutUsForm, NewsForm, CourseForm, LessonForm, ProfileForm, UserCreateForm, TeacherForm
+from core.models import AboutUs, News, Course, Lesson, Teacher, MainPhoto
+from dashboard.forms import AboutUsForm, NewsForm, CourseForm, LessonForm, ProfileForm, UserCreateForm, TeacherForm, \
+    PhotoForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -305,8 +306,8 @@ def teachers_create(request):
     return render(request, 'dashboard/teacher/form.html', ctx)
 
 
-def teachers_edit(request, slug):
-    model = Teacher.objects.get(slug=slug)
+def teachers_edit(request, id):
+    model = Teacher.objects.get(id=id)
     form = TeacherForm(request.POST or None, request.FILES, instance=model)
     if request.POST and form.is_valid():
         form.save()
@@ -318,7 +319,7 @@ def teachers_edit(request, slug):
     return render(request, 'dashboard/teacher/form.html', ctx)
 
 
-def teachers_delete(request, slug):
+def teachers_delete(request, id):
     model = Teacher.objects.get(id=id)
     model.delete()
     return redirect('teachers_list')
@@ -404,3 +405,44 @@ def lessons_delete(request, slug):
     model = Lesson.objects.get(slug=slug)
     model.delete()
     return redirect('lessons_list')
+
+
+# ================= Photo =================
+def photo_list(request):
+    photos = MainPhoto.objects.all()
+    ctx = {
+        'photos': photos
+    }
+    return render(request, 'dashboard/photo/list.html', ctx)
+
+
+def photo_create(request):
+    model = MainPhoto()
+    form = PhotoForm(request.POST or None, request.FILES, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('photo_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/photo/form.html', ctx)
+
+
+def photo_edit(request, id):
+    model = MainPhoto.objects.get(id=id)
+    form = PhotoForm(request.POST or None, request.FILES, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('photo_list')
+    ctx = {
+        'model': model,
+        'form': form
+    }
+    return render(request, 'dashboard/photo/form.html', ctx)
+
+
+def photo_delete(request, id):
+    model = MainPhoto.objects.get(id=id)
+    model.delete()
+    return redirect('photo_list')

@@ -1,4 +1,4 @@
-from core.models import AboutUs, Lesson, Course, News, Teacher
+from core.models import AboutUs, Lesson, Course, News, Teacher, MainPhoto
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -66,6 +66,15 @@ class LessonForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'placeholder': 'Enter description of lesson', 'row': 5}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'}),
 
+        }
+
+
+class PhotoForm(forms.ModelForm):
+    class Meta:
+        model = MainPhoto
+        fields = '__all__'
+        widgets = {
+            'photo': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'}),
         }
 
 

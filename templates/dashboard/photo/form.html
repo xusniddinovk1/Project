@@ -1,0 +1,25 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}{{ form_title }}{% endblock %}
+{% block page_header %}{{ form_title }}{% endblock %}
+{% with show_userbar=False %}
+{% block content %}
+<div class="form-container">
+    <h2 class="form-title">Main Photo</h2>  <!-- Qo‘shilgan sarlavha -->
+    <form method="post" enctype="multipart/form-data" class="styled-form">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Rasm</label>
+            {{ form.photo }}
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" class="submit-btn">💾 Saqlash</button>
+            <a href="{% url 'photo_list' %}" class="cancel-btn">⬅️ Orqaga</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+{% endwith %}
