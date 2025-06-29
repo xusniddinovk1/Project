@@ -6,9 +6,9 @@ from dashboard.views import about_us_edit
 def home_page(request):
     about_us = AboutUs.objects.all()
     news_item = News.objects.order_by('-created_at')[:6]
-    courses = Course.objects.all()
-    lessons = Lesson.objects.all()[:8]
-    teachers = Teacher.objects.all()
+    courses = Course.objects.all()[:6]
+    lessons = Lesson.objects.all()[:6]
+    teachers = Teacher.objects.all()[:8]
     main_photo = MainPhoto.objects.last()
 
     ctx = {
