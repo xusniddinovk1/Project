@@ -1,12 +1,22 @@
 from django.shortcuts import render
 from core.models import AboutUs, News, Lesson, Course, MainPhoto, Teacher
+from dashboard.views import about_us_edit
 
 
-def about_us_view(request):
-    about_list = AboutUs.objects.all()
-    return render(request, 'core/about.html', {'about_list': about_list})
-
-
-def teacher_list(request):
+def home_page(request):
+    about_us = AboutUs.objects.all()
+    news_item = News.objects.order_by('-created_at')[:6]
+    courses = Course.objects.all()
+    lessons = Lesson.objects.all()[:8]
     teachers = Teacher.objects.all()
-    return render(request, 'core/teachers.html', {'teachers': teachers})
+    main_photo = MainPhoto.objects.last()
+
+    ctx = {
+        'about_us': about_us,
+        'news_items': news_item,
+        'courses': courses,
+        'lessons': lessons,
+        'teachers': teachers,
+        'main_photo': main_photo
+    }
+    return render(request, 'core/index.html', ctx)
