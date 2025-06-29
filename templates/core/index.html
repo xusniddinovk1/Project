@@ -82,7 +82,7 @@
                     <h5 class="card-title">{{ course.name }}</h5>
                     <p class="card-text">{{ course.description|truncatewords:25 }}</p>
                     <small class="text-muted">O‘qituvchi: {{ course.teacher.first_name }}</small>
-                    <a href="#" class="btn btn-modern mt-auto">Batafsil</a>
+                    <a href="{% url 'course_detail' course.id %}" class="btn btn-modern mt-auto">Batafsil</a>
                 </div>
             </div>
         </div>

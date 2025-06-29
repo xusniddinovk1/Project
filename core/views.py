@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from core.models import AboutUs, News, Lesson, Course, MainPhoto, Teacher
-from dashboard.views import about_us_edit
 
 
 def home_page(request):
@@ -20,3 +19,15 @@ def home_page(request):
         'main_photo': main_photo
     }
     return render(request, 'core/index.html', ctx)
+
+
+def course_detail(request, id):
+    course = Course.objects.get(pk=id)
+
+    related_courses = Course.objects.order_by('-created_at')[:6]
+
+    ctx = {
+        'course': course,
+        'related_courses': related_courses
+    }
+    return render(request, 'core/course/course_detail.html', ctx)
