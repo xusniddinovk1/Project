@@ -1,3 +1,8 @@
+/* navbar */
+.navbar-nav .nav-item + .nav-item {
+  margin-left: 20px;  /* bo‘limlar orasini ochish */
+}
+
 /* hero section */
 .hero {
     background: url("/static/core/img/main_page.jpg") no-repeat center center;
@@ -23,7 +28,7 @@
     z-index: 1;
 }
 
-
+/* custom css */
 .custom-row {
     margin-left: -8px;
     margin-right: -8px;
@@ -39,7 +44,6 @@
     padding-left: 6px;
     padding-right: 6px;
 }
-
 
 /* modern card */
 .modern-card {
@@ -138,6 +142,7 @@
     font-size: 0.9rem;
     font-style: italic;
 }
+
 /* Responsive: kichik ekranlarda 1 yoki 2 ustun */
 @media (max-width: 576px) {
     .teacher-card {
