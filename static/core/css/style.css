@@ -23,7 +23,7 @@ body {
 }
 
 .logo span {
-    color: #09e927;
+  color: #47862a;
 }
 .nav-links {
   display: flex;
@@ -38,12 +38,12 @@ body {
 
 .login-button {
   padding: 10px 20px;
-  background: #09e927;
+  background: #47862a;
   color: #fff;
   border-radius: 12px;
   font-weight: 600;
   text-decoration: none;
-  border: 2px solid #09e927;
+  border: 2px solid #47862a;
 }
 /* Hero */
 .hero-section {
@@ -51,7 +51,7 @@ body {
   justify-content: space-between;
   padding: 90px 0px;
   align-items: center;
-  background: linear-gradient(to right, #08cc49, #35f323);
+  background: linear-gradient(to right, #047529, #47862a);
   border-radius: 20px;
   margin: 30px;
   margin-bottom: 24px;
@@ -133,20 +133,20 @@ h1 {
 
 .stat-card h3 {
   font-size: 25px;
-  color: #15fd00;
+  color: #47862a;
   margin-bottom: 8px;
 }
 
 .stat-card p {
   font-size: 25px;
-  color: #15fd00;
+  color: #47862a;
 }
 
 .eduhub-why-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to right, #08cc49, #35f323);
+  background: linear-gradient(to right, #047529, #47862a);
   padding: 60px 80px;
   margin-top: 60px;
   border-radius: 16px;
@@ -174,7 +174,7 @@ h1 {
 
 .cta-button {
   display: inline-block;
-  background: #38d408;
+  background: #47862a;
   color: white;
   padding: 12px 24px;
   border-radius: 10px;
@@ -188,7 +188,7 @@ h1 {
 }
 
 .why-image img {
-  width: 250px;           /* oldin 280px edi */
+  width: 250px; /* oldin 280px edi */
   height: 250px;
   border-radius: 16px;
 }
@@ -198,7 +198,7 @@ h1 {
   background-color: #47862a;
   color: #f1f1f1;
   padding: 60px 20px 20px;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
 }

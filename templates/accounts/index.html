@@ -1,67 +1,11 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <title>Shaxsiy Kabinet - EduHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f3f4f6;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 60px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-
-        h2 {
-            color: #1f2937;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .info {
-            margin-bottom: 20px;
-            font-size: 18px;
-            color: #374151;
-        }
-
-        .label {
-            font-weight: bold;
-            color: #6b7280;
-        }
-
-        .logout-btn {
-            display: inline-block;
-            background: #ef4444;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 30px;
-            transition: 0.3s;
-        }
-
-        .logout-btn:hover {
-            background: #dc2626;
-        }
-
-        .topbar {
-            background: #09e927;
-            padding: 16px;
-            color: white;
-            font-size: 20px;
-            text-align: center;
-            border-radius: 0 0 16px 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css'%}">
 </head>
 <body>
 
@@ -73,7 +17,7 @@
     <div class="info"><span class="label">Email:</span> {{ user.email }}</div>
     <div class="info"><span class="label">Telefon raqam:</span> {{ user.phone_number }}</div>
 
-    <a href="{% url 'logout_page' %}" class="logout-btn">Chiqish</a>
+    <a href="{% url 'logout' %}" class="logout-btn">Chiqish</a>
 </div>
 
 </body>

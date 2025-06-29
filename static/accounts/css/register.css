@@ -6,7 +6,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #08cc49, #35f323);
+  background: linear-gradient(to right, #047529, #47862a);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,14 +44,14 @@ input[type="password"] {
 }
 
 input:focus {
-  border-color: #09e927;
+  border-color: #47862a;
   outline: none;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
 button {
   padding: 12px;
-  background-color: #09e927;
+  background-color: #47862a;
   color: white;
   font-size: 16px;
   border: none;
@@ -76,3 +76,5 @@ button:hover {
   color: #64748b;
   margin-top: 20px;
 }
+
+
