@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>RoboDev Yangliklar</title>
+    <link rel="stylesheet" href="{% static 'core/css/news.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">
+        <span>RoboDev</span>
+    </div>
+    <nav class="nav-links">
+        <a href="#">Kurslar</a>
+        <a href="#">Darsliklar</a>
+        <a href="#">Fikrlar</a>
+        <a href="#">Yangiliklar</a>
+    </nav>
+    <a href="{% url 'login' %}" class="login-button">Kirish</a>
+</header>
+<main class="container">
+    <section class="news-grid">
+        {% for news in news_item %}
+        <article class="news-card">
+            <img src="{{ news.image.url }}" alt="{{ news.title }}">
+            <div class="news-content">
+                <h3 class="news-date">{{ news.created_at|date:"d-m-Y" }}</h3> <!-- Kichikroq sanani qo'shish -->
+                <h2>{{ news.title}}</h2>
+                <p>{{ news.content |truncatechars:60}}</p>
+                <a href="{% url 'news_detail_page' news.slug %}">Batafsil →</a>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+</main>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>RoboDev</h3>
+            <p>Zamonaviy onlayn ta’lim platformasi.</p>
+            <address class="footer-address">
+                Address: Amir Temur ko‘chasi 12, Toshkent,<br>
+            </address>
+        </div>
+
+        <div class="footer-column">
+            <h4>Foydali</h4>
+            <ul>
+                <li><a href="#">Kurslar</a></li>
+                <li><a href="#">Ustozlar</a></li>
+                <li><a href="#">Bitiruvchilar</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Platforma</h4>
+            <ul>
+                <li><a href="#">Biz haqimizda</a></li>
+                <li><a href="#">Yordam</a></li>
+                <li><a href="#">Savollar</a></li>
+                <li><a href="#">Shartlar</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Biz bilan bog‘laning</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 RoboDev. Barcha huquqlar himoyalangan.</p>
+    </div>
+</footer>
+</body>
+</html>

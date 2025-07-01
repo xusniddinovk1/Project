@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>RoboDev - Onlayn Ta'lim Platformasi</title>
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <header class="navbar">
@@ -16,7 +17,7 @@
         <a href="#">Kurslar</a>
         <a href="#">Darsliklar</a>
         <a href="#">Fikrlar</a>
-        <a href="#">Yangiliklar</a>
+        <a href="{% url 'news_page' %}">Yangiliklar</a>
     </nav>
     <a href="{% url 'login' %}" class="login-button">Kirish</a>
 </header>

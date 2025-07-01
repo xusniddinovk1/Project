@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uz">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ news.title }}</title>
+    <link rel="stylesheet" href="{% static 'core/css/news_detail.css' %}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">
+        <span>RoboDev</span>
+    </div>
+    <nav class="nav-links">
+        <a href="#">Kurslar</a>
+        <a href="#">Darsliklar</a>
+        <a href="#">Fikrlar</a>
+        <a href="{% url 'news_page' %}">Yangiliklar</a>
+    </nav>
+    <a href="{% url 'login' %}" class="login-button">Kirish</a>
+</header>
+
+<main class="news-main container">
+    <div class="news-wrapper">
+        <!-- Mundarija -->
+        <aside class="news-sidebar">
+            <div class="toc-header" onclick="toggleToc()">
+                <h3>Mundarija</h3>
+            </div>
+            <ul class="toc-list" id="toc-list">
+                {% for item in toc %}
+                <li class="toc-item toc-{{ item.tag }}">
+                    <a href="#{{ item.id }}"> {{ forloop.counter }}. {{ item.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </aside>
+
+        <!-- Maqola -->
+        <article class="news-detail">
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-image">
+            <div class="news-meta">
+                <span>📅 {{ news.created_at|date:"d-m-Y" }}</span>
+                <span>⏱️ 5-7 daqiqa</span>
+            </div>
+            <h1 class="news-title">{{ news.title }}</h1>
+            <div class="news-content">
+                {{ news.content|safe }}
+            </div>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>RoboDev</h3>
+            <p>Zamonaviy onlayn ta’lim platformasi.</p>
+            <address class="footer-address">
+                Address: Amir Temur ko‘chasi 12, Toshkent,<br>
+            </address>
+        </div>
+
+        <div class="footer-column">
+            <h4>Foydali</h4>
+            <ul>
+                <li><a href="#">Kurslar</a></li>
+                <li><a href="#">Ustozlar</a></li>
+                <li><a href="#">Bitiruvchilar</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Platforma</h4>
+            <ul>
+                <li><a href="#">Biz haqimizda</a></li>
+                <li><a href="#">Yordam</a></li>
+                <li><a href="#">Savollar</a></li>
+                <li><a href="#">Shartlar</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Biz bilan bog‘laning</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 RoboDev. Barcha huquqlar himoyalangan.</p>
+    </div>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const headings = Array.from(document.querySelectorAll(".news-content h2, .news-content h3"));
+      const tocLinks = document.querySelectorAll(".toc-list a");
+
+      function onScroll() {
+        let activeId = null;
+
+        for (let i = 0; i < headings.length; i++) {
+          const rect = headings[i].getBoundingClientRect();
+
+          // Bu heading ekranning yuqori chetiga eng yaqin bo‘lsa — uni tanlaymiz
+          if (rect.top <= 100) {
+            activeId = headings[i].id;
+          }
+        }
+
+        tocLinks.forEach(link => {
+          const href = link.getAttribute("href").substring(1); // "#section-id" dan "section-id"
+          link.classList.toggle("active", href === activeId);
+        });
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // Dastlab ham ishga tushirish
+      onScroll();
+    });
+</script>
+
+
+</body>
+</html>
