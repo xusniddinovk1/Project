@@ -55,6 +55,39 @@
         <a href="#" class="cta-button">Batafsil</a>
     </div>
 </section>
+<div class="courses-grid">
+    {% for course in courses %}
+    <div class="course-card" data-title="{{ course.name }}"
+         data-teacher="{{ course.teacher }}"
+         data-description="{{ course.description }}"
+         data-price="{{ course.price }}">
+        <img class="course-image" src="{{ course.image.url }}" alt="{{ course.name }}">
+        <div class="course-content">
+            <h2 class="course-title">{{ course.name }}</h2>
+            <h3 class="course-description">{{ course.description |truncatechars:60}}</h3>
+            <p class="course-teacher">O'qituvchi: {{ course.teacher }}</p>
+            <div class="course-footer">
+                <span class="course-price">{{ course.price }} so'm</span>
+                <button class="buy-btn details-btn">Batafsil</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Modal Oynasi -->
+<div id="courseModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalTeacher"></p>
+        <p id="modalDescription"></p>
+        <div class="modal-footer">
+            <span id="modalPrice" class="course-price"></span>
+            <a href="#" class="buy-btn">Sotib olish</a>
+        </div>
+    </div>
+</div>
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-column">
@@ -100,5 +133,32 @@
         <p>&copy; 2025 RoboDev. Barcha huquqlar himoyalangan.</p>
     </div>
 </footer>
+<script>
+    // Modal funksiyasi
+    const modal = document.getElementById('courseModal');
+    const closeBtn = document.querySelector('.modal .close');
+
+    document.querySelectorAll('.details-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const card = this.closest('.course-card');
+        document.getElementById('modalTitle').innerText = card.dataset.title;
+        document.getElementById('modalTeacher').innerText = "O'qituvchi: " + card.dataset.teacher;
+        document.getElementById('modalDescription').innerText = card.dataset.description;
+        document.getElementById('modalPrice').innerText = card.dataset.price;
+
+        modal.style.display = 'block';
+      });
+    });
+
+    closeBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+</script>
 </body>
 </html>

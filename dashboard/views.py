@@ -361,7 +361,7 @@ def courses_edit(request, slug):
 
 
 def courses_delete(request, slug):
-    model = News.objects.get(slug=slug)
+    model = Course.objects.get(slug=slug)
     model.delete()
     return redirect('courses_list')
 

@@ -109,7 +109,7 @@ body {
 /* Tavsif ustuni kengroq */
 .table td.description,
 .table th.description {
-  width: 300px;
+  width: 160px;
 }
 
 /* Rasm uchun o‘lcham */
@@ -124,7 +124,7 @@ body {
 /* Yaratilgan vaqti ustuni */
 .table td.created,
 .table th.created {
-  min-width: 160px;
+  min-width: 150px;
   white-space: nowrap;
   text-overflow: clip;
 }

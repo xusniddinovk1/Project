@@ -49,6 +49,7 @@ class Course(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='course')
+    price = models.CharField(max_length=50)
     teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

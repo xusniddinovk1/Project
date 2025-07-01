@@ -17,6 +17,7 @@
                 <th class="slug">Slug</th>
                 <th class="description">Tavsif</th>
                 <th class="teacher">O'qituvchi</th>
+                <th class="price">Narxi</th>
                 <th class="image">Rasm</th>
                 <th class="created">Yaratilgan</th>
                 <th class="actions">Amallar</th>
@@ -29,6 +30,7 @@
                 <td class="slug">{{ txt.slug }}</td>
                 <td class="description">{{ txt.description|truncatechars:60 }}</td>
                 <td class="teacher">{{ txt.teacher}}</td>
+                <td class="price">{{ txt.price}} so'm</td>
                 <td class="image">
                     {% if txt.image %}
                     <img src="{{ txt.image.url }}" alt="Rasm"/>

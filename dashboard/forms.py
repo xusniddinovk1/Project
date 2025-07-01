@@ -51,6 +51,7 @@ class CourseForm(forms.ModelForm):
             'slug': forms.HiddenInput(),
             'description': forms.Textarea(
                 attrs={'class': 'form-control', 'placeholder': 'Enter description of course', 'row': 5}),
+            'price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter price of course'}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'onchange': 'loadFile(event)'})
         }
 
