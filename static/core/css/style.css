@@ -4,7 +4,7 @@ body {
   background: #f8fbff;
   color: #222;
 }
-/* Navbar */
+/* navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,9 @@ body {
   text-decoration: none;
   border: 2px solid #47862a;
 }
-/* Hero */
+/* end navbar */
+
+/* hero section */
 .hero-section {
   display: flex;
   justify-content: space-between;
@@ -118,7 +120,9 @@ h1 {
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
 }
+/* hero section */
 
+/* stats section */
 .stats-section {
   display: flex;
   justify-content: space-between;
@@ -174,7 +178,9 @@ h1 {
   font-size: 25px;
   color: #47862a;
 }
+/* end stats section */
 
+/* why section */
 .eduhub-why-section {
   display: flex;
   justify-content: space-between;
@@ -226,7 +232,9 @@ h1 {
   height: 250px;
   border-radius: 16px;
 }
+/* end why section */
 
+/* courses */
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -317,13 +325,6 @@ h1 {
   background-color: #53d317;
 }
 
-/* Responsive */
-@media (max-width: 400px) {
-  body {
-    margin: 20px 10px;
-  }
-}
-
 /* Modal style */
 .modal {
   display: none;
@@ -381,7 +382,9 @@ h1 {
 .modal .close:hover {
   color: #000;
 }
+/* end courses */
 
+/* contact section */
 .contact-section {
   display: flex;
   justify-content: center;
@@ -401,7 +404,6 @@ h1 {
   gap: 40px;
 }
 
-/* Chap tomon */
 .contact-text {
   flex: 1 1 50%;
   color: white;
@@ -419,7 +421,6 @@ h1 {
   line-height: 1.6;
 }
 
-/* O‘ng tomon (forma) */
 .contact-card {
   flex: 1 1 40%;
   background: #1f5f02;
@@ -449,7 +450,7 @@ h1 {
   border: none;
   border-radius: 12px;
   background-color: #ffffff;
-  color: #222222;             /* qora matn (ko‘rinadi) */
+  color: #222222;
   font-size: 15px;
   transition: 0.3s ease;
 }
@@ -474,18 +475,6 @@ h1 {
 
 .btn-submit:hover {
   background: #24e22d;
-}
-/* Mobil uchun moslashuv */
-@media (max-width: 768px) {
-  .contact-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .contact-text,
-  .contact-card {
-    flex: 1 1 100%;
-  }
 }
 
 .input-with-icon {
@@ -514,7 +503,9 @@ h1 {
   color: white;
   font-size: 15px;
 }
+/* end contact section */
 
+/* footer */
 .site-footer {
   margin-top: 20px;
   background-color: #47862a;
@@ -592,3 +583,4 @@ h1 {
   color: #ffffff;
   line-height: 1.6;
 }
+/* end footer */

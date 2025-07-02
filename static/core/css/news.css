@@ -4,14 +4,14 @@ body {
   background: #f8fbff;
   color: #222;
 }
-/* Navbar */
+/* navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px;
   background: #fff;
-  position: static; /* navbar endi scroll bilan pastga tushadi */
+  position: static;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -27,7 +27,7 @@ body {
 }
 .nav-links {
   display: flex;
-  margin-left: auto; /* bu yerda mo'jiza */
+  margin-left: auto;
 }
 .nav-links a {
   margin: 0 15px;
@@ -46,7 +46,6 @@ body {
   border: 2px solid #47862a;
 }
 
-/* Yangiliklar kartalari */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -79,8 +78,8 @@ body {
 }
 
 .news-date {
-  font-size: 12px; /* Kichikroq va bosiqroq font */
-  color: #888; /* Rangi bosiqroq */
+  font-size: 12px;
+  color: #888;
   margin-bottom: 5px;
 }
 .news-content h2 {
