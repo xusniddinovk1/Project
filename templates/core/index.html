@@ -13,8 +13,8 @@
 <!--<========== Header ==========>-->
 <header class="navbar">
     <div class="logo">
-            <img src="{% static 'core/img/logo.png'%}" alt="company logo" class="logo-img"/>
-            <span>RoboDev</span>
+        <img src="{% static 'core/img/logo.png'%}" alt="company logo" class="logo-img"/>
+        <span>RoboDev</span>
     </div>
     <nav class="nav-links">
         <a href="#courses">Kurslar</a>
@@ -76,8 +76,9 @@
     </div>
 </section>
 <!--<========== end why section ==========>-->
-
-<h2 id="courses"> Kurslar ro'yhati </h2>
+<div class="course">
+    <h2 id="courses"> Kurslar ro'yhati </h2>
+</div>
 <!--<========== courses ==========>-->
 <div class="courses-grid">
     {% for course in courses %}
