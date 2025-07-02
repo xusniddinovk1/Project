@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+<!--<========== header ==========>-->
 <header class="navbar">
     <div class="logo">
         <span>RoboDev</span>
@@ -21,6 +22,9 @@
     </nav>
     <a href="{% url 'login' %}" class="login-button">Kirish</a>
 </header>
+<!--<========== end header ==========>-->
+
+<!--<========== container ==========>-->
 <main class="container">
     <section class="news-grid">
         {% for news in news_item %}
@@ -36,6 +40,9 @@
         {% endfor %}
     </section>
 </main>
+<!--<========== end container ==========>-->
+
+<!--<========== footer ==========>-->
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-column">
@@ -81,5 +88,7 @@
         <p>&copy; 2025 RoboDev. Barcha huquqlar himoyalangan.</p>
     </div>
 </footer>
+<!--<========== end footer ==========>-->
+
 </body>
 </html>

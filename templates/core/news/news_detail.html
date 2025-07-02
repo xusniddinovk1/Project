@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<!--<========== header ==========>-->
 <header class="navbar">
     <div class="logo">
         <span>RoboDev</span>
@@ -21,7 +23,9 @@
     </nav>
     <a href="{% url 'login' %}" class="login-button">Kirish</a>
 </header>
+<!--<========== end header ==========>-->
 
+<!--<========== news ==========>-->
 <main class="news-main container">
     <div class="news-wrapper">
         <!-- Mundarija -->
@@ -38,12 +42,11 @@
             </ul>
         </aside>
 
-        <!-- Maqola -->
+        <!-- article -->
         <article class="news-detail">
             <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-image">
             <div class="news-meta">
                 <span>📅 {{ news.created_at|date:"d-m-Y" }}</span>
-                <span>⏱️ 5-7 daqiqa</span>
             </div>
             <h1 class="news-title">{{ news.title }}</h1>
             <div class="news-content">
@@ -52,7 +55,9 @@
         </article>
     </div>
 </main>
+<!--<========== end news ==========>-->
 
+<!--<========== footer ==========>-->
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-column">
@@ -98,6 +103,8 @@
         <p>&copy; 2025 RoboDev. Barcha huquqlar himoyalangan.</p>
     </div>
 </footer>
+<!--<========== end footer ==========>-->
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
       const headings = Array.from(document.querySelectorAll(".news-content h2, .news-content h3"));
@@ -127,7 +134,5 @@
       onScroll();
     });
 </script>
-
-
 </body>
 </html>
