@@ -36,7 +36,7 @@
             <ul class="toc-list" id="toc-list">
                 {% for item in toc %}
                 <li class="toc-item toc-{{ item.tag }}">
-                    <a href="#{{ item.id }}"> {{ forloop.counter }}. {{ item.title }}</a>
+                    <a href="#{{ item.id }}">-- {{ item.title }}</a>
                 </li>
                 {% endfor %}
             </ul>
@@ -55,6 +55,24 @@
         </article>
     </div>
 </main>
+
+<h2> O'xshash yangiliklar </h2>
+
+<div class="container">
+    <section class="news-grid">
+        {% for news in related_news %}
+        <article class="news-card">
+            <img src="{{ news.image.url }}" alt="{{ news.title }}">
+            <div class="news-content">
+                <h3 class="news-date">{{ news.created_at|date:"d-m-Y" }}</h3> <!-- Kichikroq sanani qo'shish -->
+                <h2>{{ news.title}}</h2>
+                <p>{{ news.content |truncatechars:60}}</p>
+                <a href="{% url 'news_detail_page' news.slug %}">Batafsil →</a>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+</div>
 <!--<========== end news ==========>-->
 
 <!--<========== footer ==========>-->

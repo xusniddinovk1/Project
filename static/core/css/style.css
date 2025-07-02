@@ -184,14 +184,12 @@ h1 {
 .eduhub-why-section {
   display: flex;
   justify-content: space-between;
+  padding: 90px 0px;
   align-items: center;
   background: linear-gradient(to right, #047529, #47862a);
-  padding: 60px 80px;
-  margin-top: 60px;
-  margin-bottom: 60px;
-  border-radius: 16px;
-  gap: 40px;
-  flex-wrap: wrap;
+  border-radius: 20px;
+  margin: 30px;
+  margin-bottom: 24px;
 }
 
 .why-text {
@@ -203,12 +201,14 @@ h1 {
   font-size: 18px;
   color: #000000;
   margin-bottom: 12px;
+  margin-left: 25px;
 }
 
 .why-question {
   margin-top: 10px;
   font-size: 35px;
   color: #000000;
+  margin-left: 25px;
   margin-bottom: 20px;
 }
 
@@ -219,6 +219,7 @@ h1 {
   padding: 12px 24px;
   border-radius: 10px;
   text-decoration: none;
+  margin-left: 25px;
   font-weight: 600;
   transition: background 0.3s;
 }
@@ -237,11 +238,11 @@ h1 {
 /* courses */
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 24px;
-  max-width: 1200px;
+  max-width: 1300px;
   width: 100%;
-  margin-left: 69px;
+  margin-left: 25px;
 }
 
 .course-card {

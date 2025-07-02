@@ -27,7 +27,7 @@ def home_page(request):
             username = form.cleaned_data['username']
 
             # send message to telegram admin
-            message = f"🆕 Yangi murojaat:\n👤 Ismi: {name}\n📞 Telefon: {phone_number}\n💬 Telegram: {username}"
+            message = f"🆕 Yangi murojaat:\n👤 Ismi: {name}\n📞 Telefon: {phone_number}\n💬 Telegram: @{username}"
             url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
             requests.post(url, data={"chat_id": ADMIN_ID, "text": message})
 
@@ -61,6 +61,8 @@ def news_page(request):
 def news_detail_page(request, slug):
     news = get_object_or_404(News, slug=slug)
 
+    related_news = News.objects.exclude(id=news.id).order_by('-created_at')[:4]
+
     # Content ichidagi sarlavhalardan mundarija yasash
     soup = BeautifulSoup(news.content, 'html.parser')
     headings = soup.find_all(['h2', 'h3'])
@@ -77,5 +79,6 @@ def news_detail_page(request, slug):
     context = {
         'news': news,
         'toc': toc,
+        'related_news': related_news
     }
     return render(request, 'core/news/news_detail.html', context)
