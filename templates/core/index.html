@@ -102,26 +102,26 @@
         <!-- Chap tomon: Matn -->
         <div class="contact-text">
             <h2>Kasbingizni topishda sizga yordam beramiz</h2>
-            <p>Quyidagi formani to‘ldiring, biz siz bilan tez orada bog‘lanamiz.</p>
+            <p>Formani to‘ldiring, biz siz bilan tez orada bog‘lanamiz.</p>
         </div>
 
-        <!-- O‘ng tomon: Forma -->
+
         <div class="contact-card">
             <form method="POST" class="contact-form">
                 {% csrf_token %}
 
                 <div class="form-group">
-                    {{ form.name.label_tag }}
+                    <label>Ismingizni kitiring</label>
                     {{ form.name }}
                 </div>
 
                 <div class="form-group">
-                    {{ form.phone_number.label_tag }}
+                    <label>Telefon raqamingizni kiriting</label>
                     {{ form.phone_number }}
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.username.id_for_label }}">Telegram username</label>
+                    <label for="{{ form.username.id_for_label }}">Telegram username ni kiriting</label>
                     <div class="input-with-icon">
                         <i class="fab fa-telegram"></i>
                         {{ form.username }}
