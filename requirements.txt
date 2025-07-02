@@ -5,3 +5,5 @@ pillow==11.2.1
 python-dotenv==1.1.0
 sqlparse==0.5.3
 tzdata==2025.2
+beautifulsoup4~=4.13.4
+requests~=2.32.4

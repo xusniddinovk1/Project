@@ -28,6 +28,14 @@
         <h1>Dasturlashga o’rgatamiz</h1>
         <a href="#" class="cta-button">O’qishni boshlash</a>
     </div>
+
+    <div class="hero-images">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="{% static 'video/video.mp4' %}" type="video/mp4">
+            Sizning brauzeringiz video formatini qo‘llab-quvvatlamaydi.
+        </video>
+        <img src="{% static 'core/img/img.png' %}" alt="Rasm 2">
+    </div>
 </main>
 <section class="stats-section">
     <div class="stats-text">
@@ -89,6 +97,42 @@
         </div>
     </div>
 </div>
+<section class="contact-section">
+    <div class="contact-wrapper">
+        <!-- Chap tomon: Matn -->
+        <div class="contact-text">
+            <h2>Kasbingizni topishda sizga yordam beramiz</h2>
+            <p>Quyidagi formani to‘ldiring, biz siz bilan tez orada bog‘lanamiz.</p>
+        </div>
+
+        <!-- O‘ng tomon: Forma -->
+        <div class="contact-card">
+            <form method="POST" class="contact-form">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.phone_number.label_tag }}
+                    {{ form.phone_number }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">Telegram username</label>
+                    <div class="input-with-icon">
+                        <i class="fab fa-telegram"></i>
+                        {{ form.username }}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Jo‘natish</button>
+            </form>
+        </div>
+    </div>
+</section>
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-column">
