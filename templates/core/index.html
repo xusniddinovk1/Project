@@ -13,10 +13,11 @@
 <!--<========== Header ==========>-->
 <header class="navbar">
     <div class="logo">
-        <span>RoboDev</span>
+            <img src="{% static 'core/img/logo.png'%}" alt="company logo" class="logo-img"/>
+            <span>RoboDev</span>
     </div>
     <nav class="nav-links">
-        <a href="#">Kurslar</a>
+        <a href="#courses">Kurslar</a>
         <a href="#">Darsliklar</a>
         <a href="#">Fikrlar</a>
         <a href="{% url 'news_page' %}">Yangiliklar</a>
@@ -76,6 +77,7 @@
 </section>
 <!--<========== end why section ==========>-->
 
+<h2 id="courses"> Kurslar ro'yhati </h2>
 <!--<========== courses ==========>-->
 <div class="courses-grid">
     {% for course in courses %}
