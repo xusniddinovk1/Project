@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+
+<!--<========== Header ==========>-->
 <header class="navbar">
     <div class="logo">
         <span>RoboDev</span>
@@ -21,7 +23,9 @@
     </nav>
     <a href="{% url 'login' %}" class="login-button">Kirish</a>
 </header>
+<!--<========== End Header ==========>-->
 
+<!--<========== Hero section ==========>-->
 <main class="hero-section">
     <div class="hero-text">
         <p class="subtitle">RoboDev ONLAYN TA’LIM PLATFORMASI</p>
@@ -37,6 +41,9 @@
         <img src="{% static 'core/img/img.png' %}" alt="Rasm 2">
     </div>
 </main>
+<!--<========== end hero section ==========>-->
+
+<!--<========== stats section ==========>-->
 <section class="stats-section">
     <div class="stats-text">
         <h2>Bizning raqamlar</h2>
@@ -57,6 +64,9 @@
         </div>
     </div>
 </section>
+<!--<========== stats section ==========>-->
+
+<!--<========== why section ==========>-->
 <section class="eduhub-why-section">
     <div class="why-text">
         <h2>RoboDev jamoasi</h2>
@@ -64,6 +74,9 @@
         <a href="#" class="cta-button">Batafsil</a>
     </div>
 </section>
+<!--<========== end why section ==========>-->
+
+<!--<========== courses ==========>-->
 <div class="courses-grid">
     {% for course in courses %}
     <div class="course-card" data-title="{{ course.name }}"
@@ -84,7 +97,7 @@
     {% endfor %}
 </div>
 
-<!-- Modal Oynasi -->
+<!--<========== modal ==========>-->
 <div id="courseModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -97,6 +110,9 @@
         </div>
     </div>
 </div>
+<!--<========== end courses ==========>-->
+
+<!--<========== contact section ==========>-->
 <section class="contact-section">
     <div class="contact-wrapper">
         <!-- Chap tomon: Matn -->
@@ -133,6 +149,9 @@
         </div>
     </div>
 </section>
+<!--<========== end contact section ==========>-->
+
+<!--<========== footer ==========>-->
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-column">
@@ -178,8 +197,10 @@
         <p>&copy; 2025 RoboDev. Barcha huquqlar himoyalangan.</p>
     </div>
 </footer>
+<!--<========== end footer ==========>-->
+
 <script>
-    // Modal funksiyasi
+    // Modal function
     const modal = document.getElementById('courseModal');
     const closeBtn = document.querySelector('.modal .close');
 
