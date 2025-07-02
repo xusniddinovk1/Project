@@ -35,6 +35,9 @@ body {
   color: #333;
   font-weight: 500;
 }
+.nav-links a:hover {
+  color: green; /* Hover qilinganda yashil bo'ladi */
+}
 
 .login-button {
   padding: 10px 20px;
@@ -263,11 +266,11 @@ h1 {
 .course-price {
   font-size: 18px;
   font-weight: 700;
-  color: #1a73e8;
+  color: #5b9e3c;
 }
 
 .buy-btn {
-  background-color: #1a73e8;
+  background-color: #5b9e3c;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -281,7 +284,7 @@ h1 {
 }
 
 .buy-btn:hover {
-  background-color: #155ab6;
+  background-color: #53d317;
 }
 
 /* Responsive */

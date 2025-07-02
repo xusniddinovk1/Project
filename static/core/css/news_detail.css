@@ -88,7 +88,7 @@ body {
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #1e3a8a; /* to‘q ko‘k */
+    color: #5b9e3c; /* to‘q ko‘k */
 }
 
 .news-sidebar ul {
@@ -101,7 +101,7 @@ body {
 }
 
 .news-sidebar ul li a {
-    color: #2563eb;
+    color: #5b9e3c;
     text-decoration: none;
     font-size: 17px;
 }
